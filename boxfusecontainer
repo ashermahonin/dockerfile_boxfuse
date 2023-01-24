@@ -1,0 +1,9 @@
+FROM ubuntu:18.04
+RUN apt install jdk
+RUN apt install maven
+RUN apt install tomcat 9
+EXPOSE 80:80
+RUN apt install git
+RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+RUN mvn package
+ADD hello-1.0.war /var/lib/tomcat9/webapps/
